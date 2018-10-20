@@ -16,7 +16,7 @@ namespace POSOrderingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new POSCustomerSideForm());
+            Application.Run(new StartUpForm());
         }
     }
 }

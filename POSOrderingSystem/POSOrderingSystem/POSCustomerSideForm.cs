@@ -1,10 +1,6 @@
-﻿using POSOrderingSystem.Model;
+﻿using POSOrderingSystem.PresentationModel;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,20 +14,17 @@ namespace POSOrderingSystem
         const int BUTTON_SIZE = 100;
         const int NOT_SELECT = -1;
         Button[] _buttons;
-        List<Meal> _meals;
         int _pageIndex;
         int _nowButton = NOT_SELECT;
-        Order _order;
+        CustomerFormPresentationModel customerFormPresentationModel;
         public POSCustomerSideForm()
         {
             InitializeComponent();
-            PosCustomerSideModel posCustomerSideModel = new PosCustomerSideModel();
-            _meals = posCustomerSideModel.GetMealData();
-            _buttons = new Button[_meals.Count];
+            customerFormPresentationModel = new CustomerFormPresentationModel();
+            _buttons = new Button[customerFormPresentationModel.GetMealsCount()];
             _pageIndex = START_PAGE;
-            InitButton(_meals);
+            InitButton();
             LoadPage(_pageIndex, true);
-            _order = new Order();
         }
 
         /// <summary>   Loads a page. </summary>
@@ -44,15 +37,14 @@ namespace POSOrderingSystem
         protected void LoadPage(int pageIndex, bool visible)
         {
             var showButtons = _buttons.Skip((pageIndex - 1) * PAGE_SIZE).Take(PAGE_SIZE);
-            PosCustomerSideModel posCustomerSideModel = new PosCustomerSideModel();
 
             foreach (var btn in showButtons)
             {
                 btn.Visible = visible;
             }
-            _previousButton.Enabled = posCustomerSideModel.GetButtonEnable(PosCustomerSideModel.Buttons.Previous, pageIndex, _meals.Count);
-            _nextButton.Enabled = posCustomerSideModel.GetButtonEnable(PosCustomerSideModel.Buttons.Next, pageIndex, _meals.Count);
-            _pageLabel.Text = $"Page : {pageIndex}/{(_meals.Count / PAGE_SIZE) + 1}";
+            _previousButton.Enabled = customerFormPresentationModel.GetButtonEnable((int)Buttons.Previous, pageIndex);
+            _nextButton.Enabled = customerFormPresentationModel.GetButtonEnable((int)Buttons.Next, pageIndex);
+            _pageLabel.Text = $"Page : {pageIndex}/{(customerFormPresentationModel.GetMealsCount() / PAGE_SIZE) + 1}";
         }
 
         /// <summary>   Initializes the button. </summary>
@@ -61,20 +53,20 @@ namespace POSOrderingSystem
         ///
         /// <param> The meals. </param>
 
-        private void InitButton(List<Meal> meals)
+        private void InitButton()
         {
-            PosCustomerSideModel posCustomerSideModel = new PosCustomerSideModel();
             _addButton.Enabled = false;
             for (int i = 0; i < _buttons.Length; i++)
             {
-                _buttons[i] = new Button
-                {
-                    Tag = i,
-                    Visible = false,
-                    Text = meals[i].GetButtonText(),
-                    Size = new Size(BUTTON_SIZE, BUTTON_SIZE),
-                    Location = posCustomerSideModel.GetPoint(i)
-                };
+
+                Object[] info = customerFormPresentationModel.GetButtonInfo(i);
+                _buttons[i] = new Button();
+                _buttons[i].Tag = i;
+                _buttons[i].Visible = false;
+                _buttons[i].Text = info[0].ToString();
+                _buttons[i].Size = new Size(BUTTON_SIZE, BUTTON_SIZE);
+                _buttons[i].Location = (Point)info[1];
+                _buttons[i].Image = System.Drawing.Image.FromFile(@"..\..\MealButtonImg\" + i + @".png");
                 _buttons[i].Click += new EventHandler(MealButton_Click);
                 _mealGroupBox.Controls.Add(_buttons[i]);
             }
@@ -116,6 +108,8 @@ namespace POSOrderingSystem
         private void MealButton_Click(object sender, EventArgs e)
         {
             _nowButton = Int32.Parse(((Button)sender).Tag.ToString());
+            var data = customerFormPresentationModel.GetNowButtonData(_nowButton);
+            _descriptionTextBox.Text = (string)data[(int)ButtonData.Descript];
             _addButton.Enabled = true;
         }
 
@@ -128,16 +122,62 @@ namespace POSOrderingSystem
 
         private void _addButton_Click(object sender, EventArgs e)
         {
-            PosCustomerSideModel posCustomerSideModel = new PosCustomerSideModel();
 
             if (_nowButton == -1) return;
-            DataGridViewRowCollection rows = _mealsDataGridView.Rows;
-            Meal meal = _meals[_nowButton];
-            rows.Add(meal.Name, meal.Price + "元");
-            _order.Meals.Add(meal);
+
+            var data = customerFormPresentationModel.GetNowButtonData(_nowButton);
+            _mealsDataGridView.Rows.Add(data);
             _nowButton = NOT_SELECT;
             _addButton.Enabled = false;
-            _totalLabel.Text = $"Total:{posCustomerSideModel.GetTotal(_order)}元";
+
+
+            AddDataGrid();
+            _totalLabel.Text = $"Total:{customerFormPresentationModel.GetTotal()}元";
         }
+
+        /// <summary>
+        /// Event handler. Called by _mealsDataGridView for cell content click events.
+        /// </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
+        ///
+        /// <param>             Source of the event. </param>
+        /// <param name="e">    . </param>
+
+        private void _mealsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGridView = (DataGridView)sender;
+            if (dataGridView.Columns[e.ColumnIndex] == _deleteColumn)
+            {
+                dataGridView.Rows.RemoveAt(e.RowIndex);
+                AddDataGrid();
+                _totalLabel.Text = $"Total:{customerFormPresentationModel.GetTotal()}元";
+            }
+        }
+
+        /// <summary>   Adds data grid. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
+
+        private void AddDataGrid()
+        {
+            foreach (DataGridViewRow row in _mealsDataGridView.Rows)
+            {
+                customerFormPresentationModel.AddOrder(row.Cells[3].Value);
+            }
+        }
+        public enum ButtonData
+        {
+            Delete,
+            Name,
+            Price,
+            Meal,
+            Descript
+        }
+        public enum Buttons
+        {
+            Previous,
+            Next
+        };
     }
 }

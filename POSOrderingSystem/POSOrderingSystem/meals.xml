@@ -3,61 +3,76 @@
   <meal>
     <name>烤鯖魚押壽司</name>
     <price>40</price>
+    <description>我是敘述1</description>
   </meal>
   <meal>
     <name>稻荷天婦羅壽司</name>
     <price>40</price>
+    <description>我是敘述2</description>
   </meal>
   <meal>
     <name>鯖魚押壽司</name>
     <price>40</price>
+    <description>我是敘述3</description>
   </meal>
   <meal>
     <name>大甲葉花枝</name>
     <price>40</price>
+    <description>我是敘述4</description>
   </meal>
   <meal>
     <name>炙烤起士長鰭鮪魚</name>
     <price>40</price>
+    <description>我是敘述5</description>
   </meal>
   <meal>
     <name>特選長鰭鮪魚</name>
     <price>80</price>
+    <description>我是敘述6</description>
   </meal>
   <meal>
     <name>長鰭鮪魚</name>
     <price>40</price>
+    <description>我是敘述7</description>
   </meal>
   <meal>
     <name>炙烤鮪魚腹鱒魚卵</name>
     <price>80</price>
+    <description>我是敘述8</description>
   </meal>
   <meal>
     <name>柚子胡椒醃漬生鮮蝦</name>
     <price>40</price>
+    <description>我是敘述9</description>
   </meal>
   <meal>
     <name>炙烤照燒鮮蝦</name>
     <price>40</price>
+    <description>我是敘述10</description>
   </meal>
   <meal>
     <name>竹姬壽司蔥花鮪魚</name>
     <price>40</price>
+    <description>我是敘述11</description>
   </meal>
   <meal>
     <name>熟成鮪魚</name>
     <price>40</price>
+    <description>我是敘述12</description>
   </meal>
   <meal>
     <name>炙烤照燒鮭魚</name>
     <price>40</price>
+    <description>我是敘述13</description>
   </meal>
   <meal>
     <name>黃金酥脆捲</name>
     <price>80</price>
+    <description>我是敘述14</description>
   </meal>
   <meal>
     <name>酥脆炸蝦捲</name>
     <price>80</price>
+    <description>我是敘述15</description>
   </meal>
 </meals>

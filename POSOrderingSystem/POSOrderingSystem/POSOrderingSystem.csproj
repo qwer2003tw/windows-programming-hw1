@@ -55,10 +55,27 @@
       <DependentUpon>POSCustomerSideForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Meal.cs" />
+    <Compile Include="POSRestaurantSideForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POSRestaurantSideForm.Designer.cs">
+      <DependentUpon>POSRestaurantSideForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationModel\CustomerFormPresentationModel.cs" />
+    <Compile Include="PresentationModel\StartUpFormPresentationModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartUpForm.Designer.cs">
+      <DependentUpon>StartUpForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="POSCustomerSideForm.resx">
       <DependentUpon>POSCustomerSideForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POSRestaurantSideForm.resx">
+      <DependentUpon>POSRestaurantSideForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -69,6 +86,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StartUpForm.resx">
+      <DependentUpon>StartUpForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,6 +106,9 @@
     <Content Include="meals.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

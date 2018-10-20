@@ -10,6 +10,9 @@ namespace POSOrderingSystem.Model
     {
         string _name;
         int _price;
+        string _descript;
+        const string DELETE_TEXT = "X";
+        const string DOLLAR = "元";
 
         public string Name
         {
@@ -33,6 +36,17 @@ namespace POSOrderingSystem.Model
                 _price = value;
             }
         }
+        public string Descript
+        {
+            get
+            {
+                return _descript;
+            }
+            set
+            {
+                _descript = value;
+            }
+        }
 
         /// <summary>   Gets button text. </summary>
         ///
@@ -42,7 +56,19 @@ namespace POSOrderingSystem.Model
 
         public string GetButtonText()
         {
-            return $"{_name}{Environment.NewLine}${_price}元";
+            return $"{_name}{Environment.NewLine}${_price}{DOLLAR}";
+        }
+
+        /// <summary>   Gets button data. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
+        ///
+        /// <returns>   An array of object. </returns>
+
+        public Object[] GetButtonData()
+        {
+            Object[] result = { DELETE_TEXT, _name, _price + DOLLAR, this, _descript };
+            return result;
         }
     }
 }

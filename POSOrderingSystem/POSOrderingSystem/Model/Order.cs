@@ -21,5 +21,18 @@ namespace POSOrderingSystem.Model
             }
         }
 
+        /// <summary>   Creates the meals. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
+        ///
+        /// <param name="meals">    The meals. </param>
+
+        public void CreateMeals(Order order)
+        {
+            List<Meal> meals = order.Meals;
+            _meals.Clear();
+            _meals.AddRange(meals);
+        }
+
     }
 }

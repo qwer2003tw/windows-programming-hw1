@@ -188,12 +188,12 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>A syntax error has been discovered in file D:\University\POSOrderingSystem\POSOrderingSystem\Model\Meal.cs on line 45.</SmellType>
+              <SmellType>A syntax error has been discovered in file E:\WP_107_HW2\104590045\104590045\POSOrderingSystem\Model\Meal.cs on line 59.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>POSOrderingSystem</Project>
               <File>Meal.cs</File>
-              <Line>45</Line>
+              <Line>59</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -203,60 +203,12 @@
             </Smell>
             <Smell>
               <Id>2</Id>
-              <SmellType>A syntax error has been discovered in file D:\University\POSOrderingSystem\POSOrderingSystem\POSCustomerSideForm.cs on line 55.</SmellType>
+              <SmellType>A syntax error has been discovered in file E:\WP_107_HW2\104590045\104590045\POSOrderingSystem\POSCustomerSideForm.cs on line 47.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>POSOrderingSystem</Project>
               <File>POSCustomerSideForm.cs</File>
-              <Line>55</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>3</Id>
-              <SmellType>Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field.</SmellType>
-              <HashCode>POSOrderingSystem\POSOrderingSystem.Meal.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..14</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>POSOrderingSystem\POSOrderingSystem</Project>
-              <File>Meal.cs</File>
-              <Line>14</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>4</Id>
-              <SmellType>Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field.</SmellType>
-              <HashCode>POSOrderingSystem\POSOrderingSystem.Meal.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..25</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>POSOrderingSystem\POSOrderingSystem</Project>
-              <File>Meal.cs</File>
-              <Line>25</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>5</Id>
-              <SmellType>Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field.</SmellType>
-              <HashCode>POSOrderingSystem\POSOrderingSystem.Order.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..12</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>POSOrderingSystem\POSOrderingSystem</Project>
-              <File>Order.cs</File>
-              <Line>12</Line>
+              <Line>47</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -265,13 +217,13 @@
               <Auto>false</Auto>
             </Smell>
           </Reviews>
-          <HashCodeIgnoreList />
-          <HashCodeRequestIgnoreList>
+          <HashCodeIgnoreList>
             <string>POSOrderingSystem\POSOrderingSystem.Order.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..12</string>
             <string xsi:nil="true" />
             <string>POSOrderingSystem\POSOrderingSystem.Meal.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..14</string>
             <string>POSOrderingSystem\POSOrderingSystem.Meal.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..25</string>
-          </HashCodeRequestIgnoreList>
+          </HashCodeIgnoreList>
+          <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
             <AnalysisFiles>
               <AnalysisFile>
@@ -300,6 +252,26 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>POSRestaurantSideForm.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>POSRestaurantSideForm.Designer.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\CustomerFormPresentationModel.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\StartUpFormPresentationModel.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Program.cs</RelativePath>
                 <ProjectName>POSOrderingSystem</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
@@ -319,9 +291,19 @@
                 <ProjectName>POSOrderingSystem</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>StartUpForm.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>StartUpForm.Designer.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>359</ProductionLoc>
+          <ProductionLoc>930</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

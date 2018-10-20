@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             this._mealGroupBox = new System.Windows.Forms.GroupBox();
+            this._descriptionTextBox = new System.Windows.Forms.RichTextBox();
             this._pageLabel = new System.Windows.Forms.Label();
             this._addButton = new System.Windows.Forms.Button();
             this._nextButton = new System.Windows.Forms.Button();
             this._previousButton = new System.Windows.Forms.Button();
             this._mealsDataGridView = new System.Windows.Forms.DataGridView();
-            this._name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._mealColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._totalLabel = new System.Windows.Forms.Label();
             this._mealGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._mealsDataGridView)).BeginInit();
@@ -43,6 +46,7 @@
             // 
             // _mealGroupBox
             // 
+            this._mealGroupBox.Controls.Add(this._descriptionTextBox);
             this._mealGroupBox.Controls.Add(this._pageLabel);
             this._mealGroupBox.Controls.Add(this._addButton);
             this._mealGroupBox.Controls.Add(this._nextButton);
@@ -53,6 +57,15 @@
             this._mealGroupBox.TabIndex = 0;
             this._mealGroupBox.TabStop = false;
             this._mealGroupBox.Text = "Meals";
+            // 
+            // _descriptTextBox
+            // 
+            this._descriptionTextBox.Location = new System.Drawing.Point(11, 476);
+            this._descriptionTextBox.Name = "_descriptTextBox";
+            this._descriptionTextBox.ReadOnly = true;
+            this._descriptionTextBox.Size = new System.Drawing.Size(474, 86);
+            this._descriptionTextBox.TabIndex = 13;
+            this._descriptionTextBox.Text = "";
             // 
             // _pageLabel
             // 
@@ -67,7 +80,7 @@
             // 
             // _addButton
             // 
-            this._addButton.Location = new System.Drawing.Point(375, 550);
+            this._addButton.Location = new System.Drawing.Point(375, 574);
             this._addButton.Name = "_addButton";
             this._addButton.Size = new System.Drawing.Size(110, 23);
             this._addButton.TabIndex = 11;
@@ -100,28 +113,45 @@
             this._mealsDataGridView.AllowUserToAddRows = false;
             this._mealsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._mealsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this._name,
-            this._price});
+            this._deleteColumn,
+            this._nameColumn,
+            this._priceColumn,
+            this._mealColumn});
             this._mealsDataGridView.Location = new System.Drawing.Point(515, 12);
             this._mealsDataGridView.Name = "_mealsDataGridView";
             this._mealsDataGridView.RowHeadersVisible = false;
             this._mealsDataGridView.RowTemplate.Height = 24;
             this._mealsDataGridView.Size = new System.Drawing.Size(472, 591);
             this._mealsDataGridView.TabIndex = 1;
+            this._mealsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._mealsDataGridView_CellContentClick);
             // 
-            // name
+            // deleteCol
             // 
-            this._name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this._name.HeaderText = "Name";
-            this._name.Name = "name";
-            this._name.ReadOnly = true;
+            this._deleteColumn.HeaderText = "Delete";
+            this._deleteColumn.Name = "deleteCol";
+            this._deleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this._deleteColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // price
+            // nameCol
             // 
-            this._price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this._price.HeaderText = "Unit Price";
-            this._price.Name = "price";
-            this._price.ReadOnly = true;
+            this._nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this._nameColumn.HeaderText = "Name";
+            this._nameColumn.Name = "nameCol";
+            this._nameColumn.ReadOnly = true;
+            // 
+            // priceCol
+            // 
+            this._priceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this._priceColumn.HeaderText = "Unit Price";
+            this._priceColumn.Name = "priceCol";
+            this._priceColumn.ReadOnly = true;
+            // 
+            // mealCol
+            // 
+            this._mealColumn.HeaderText = "Meal";
+            this._mealColumn.Name = "mealCol";
+            this._mealColumn.ReadOnly = true;
+            this._mealColumn.Visible = false;
             // 
             // _totalLabel
             // 
@@ -161,8 +191,11 @@
         private System.Windows.Forms.DataGridView _mealsDataGridView;
         private System.Windows.Forms.Label _totalLabel;
         private System.Windows.Forms.Label _pageLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _price;
+        private System.Windows.Forms.RichTextBox _descriptionTextBox;
+        private System.Windows.Forms.DataGridViewButtonColumn _deleteColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _priceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _mealColumn;
     }
 }
 
