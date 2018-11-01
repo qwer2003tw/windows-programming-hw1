@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POSOrderingSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,10 @@ namespace POSOrderingSystem
     {
         POSCustomerSideForm _customerSideForm;
         POSRestaurantSideForm _restaurantSideForm;
-        public StartUpForm()
+        public StartUpForm(BindingList<Category> categories, BindingList<Meal> meals)
         {
-            _customerSideForm = new POSCustomerSideForm();
-            _restaurantSideForm = new POSRestaurantSideForm();
+            _customerSideForm = new POSCustomerSideForm(categories, meals);
+            _restaurantSideForm = new POSRestaurantSideForm(categories, meals);
             InitializeComponent();
         }
 

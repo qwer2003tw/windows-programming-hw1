@@ -2,3 +2,6 @@ POSOrderingSystem/.vs/
 POSOrderingSystem/POSOrderingSystem/obj/
 POSOrderingSystem/POSOrderingSystem/bin/
 POSOrderingSystem/POSOrderingSystem/StyleCop.Cache
+*.Cache
+POSOrderingSystem/DataGridViewNumericUpDownElements/bin/
+POSOrderingSystem/DataGridViewNumericUpDownElements/obj/

@@ -1,44 +1,92 @@
-﻿/// <summary>   The position ordering system. model. </summary>
+﻿// file:	PresentationModel\CustomerFormPresentationModel.cs
+//
+// summary:	Implements the customer form presentation model class
+
 using POSOrderingSystem.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POSOrderingSystem.PresentationModel
 {
+    /// <summary>   A data Model for the customer form presentation. </summary>
+    ///
+    /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+
     public class CustomerFormPresentationModel
     {
+        /// <summary>   Size of the page. </summary>
         const int PAGE_SIZE = 9;
+        /// <summary>   The start page. </summary>
         const int START_PAGE = 1;
+        /// <summary>   The location x coordinate. </summary>
         const int LOCATION_X = 5;
+        /// <summary>   The location y coordinate. </summary>
         const int LOCATION_Y = 20;
-        const int BUTTON_SPACE = 130;
+        /// <summary>   The button space. </summary>
+        const int BUTTON_SPACE = 110;
+        /// <summary>   The button each line. </summary>
         const int BUTTON_EACH_LINE = 3;
+        /// <summary>   The not select. </summary>
+        const int NOT_SELECT = -1;
+        /// <summary>   The now button. </summary>
+        int _nowButton = NOT_SELECT;
+
+        /// <summary>   The position customer side model. </summary>
         readonly PosCustomerSideModel _posCustomerSideModel;
-        public CustomerFormPresentationModel()
+        /// <summary>   Event queue for all listeners interested in _listChanged events. </summary>
+        public event ListChangedEventHandler _listChanged;
+
+        /// <summary>   Delegate for handling ListChanged events. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+
+        public delegate void ListChangedEventHandler();
+
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+        ///
+        /// <param name="categories">   The categories. </param>
+        /// <param name="meals">        The meals. </param>
+
+        public CustomerFormPresentationModel(BindingList<Category> categories, BindingList<Meal> meals)
         {
-            _posCustomerSideModel = new PosCustomerSideModel();
+            _posCustomerSideModel = new PosCustomerSideModel(categories, meals);
+            _posCustomerSideModel._listChanged += _posCustomerSideModel__listChanged;
+        }
+
+        /// <summary>   Position customer side model list changed. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+
+        private void _posCustomerSideModel__listChanged()
+        {
+            _listChanged();
         }
 
         /// <summary>   Gets button enable. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
         ///
-        /// <param name="buttons">      The buttons. </param>
+        /// <param name="index">        Zero-based index of the. </param>
         /// <param name="pageIndex">    Zero-based index of the page. </param>
-        /// <param name="mealsSize">    Size of the meals. </param>
         ///
         /// <returns>   True if it succeeds, false if it fails. </returns>
+        ///
+        /// ### <param name="buttons">  The buttons. </param>
+        ///
+        /// ### <param name="mealsSize">    Size of the meals. </param>
 
-        public bool GetButtonEnable(int index, int pageIndex)
+        public bool GetButtonEnable(int index, int pageIndex,string tab)
         {
+            
             switch (index)
             {
                 case 1:
-                    return (pageIndex != ((GetMealsCount() / PAGE_SIZE) + 1));
+                    return (pageIndex != (GetMealCountByCategory(tab) / PAGE_SIZE) + 1);
                 case 0:
                     return (pageIndex != START_PAGE);
                 default:
@@ -70,30 +118,31 @@ namespace POSOrderingSystem.PresentationModel
             return GetMealByIndex(index).GetButtonText();
         }
 
-        /// <summary>   Gets a point. </summary>
+        /// <summary>   Gets image path. </summary>
         ///
-        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
         /// <param name="index">    Zero-based index of the. </param>
         ///
-        /// <returns>   The point. </returns>
+        /// <returns>   The image path. </returns>
 
-        public Point GetPoint(int index)
+        public string GetImagePath(int index)
         {
-            return new Point(LOCATION_X + BUTTON_SPACE * ((index % PAGE_SIZE) % BUTTON_EACH_LINE), LOCATION_Y + BUTTON_SPACE * ((index % PAGE_SIZE) / BUTTON_EACH_LINE));
+            return GetMealByIndex(index).ImagePath;
         }
 
         /// <summary>   Gets now button data. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
         ///
-        /// <param name="nowButton">    The now button. </param>
+        /// ### <param name="nowButton">    The now button. </param>
         ///
-        /// <returns>   An array of object. </returns>
+        /// ### <returns>   An array of object. </returns>
 
-        public Object[] GetNowButtonData(int nowButton)
+        public void AddNowButtonMeal()
         {
-            return _posCustomerSideModel.GetNowButtonData(nowButton);
+            _posCustomerSideModel.AddNowButtonMeal(_nowButton);
+            SetNowButton(NOT_SELECT);
         }
 
         /// <summary>   Gets meal by index. </summary>
@@ -109,28 +158,6 @@ namespace POSOrderingSystem.PresentationModel
             return _posCustomerSideModel.GetMealByIndex(index);
         }
 
-        /// <summary>   Adds an order. </summary>
-        ///
-        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
-        ///
-        /// <param name="meal"> The meal. </param>
-
-        public void AddOrder(Object meal)
-        {
-            _posCustomerSideModel.AddTempOrder(meal);
-        }
-
-        /// <summary>   Gets the total. </summary>
-        ///
-        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
-        ///
-        /// <returns>   The total. </returns>
-
-        public int GetTotal()
-        {
-            return _posCustomerSideModel.GetTotal();
-        }
-
         /// <summary>   Gets button information. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
@@ -139,11 +166,115 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <returns>   An array of object. </returns>
 
-        public object[] GetButtonInfo(int index)
+        public object[] GetButtonInfo(int index, int offset)
         {
-            Object[] result = { GetButtonText(index), GetPoint(index) };
+            Object[] result = { GetButtonText(index), GetPoint(index - offset), GetImagePath(index) };
             return result;
         }
 
+        /// <summary>   Gets page label text. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/22. </remarks>
+        ///
+        /// <param name="pageIndex">    Zero-based index of the page. </param>
+        ///
+        /// <returns>   The page label text. </returns>
+
+        public string GetPageLabelText(int pageIndex, string tab)
+        {
+            return $"Page : {pageIndex}/{(GetMealCountByCategory(tab) / PAGE_SIZE) + 1}";
+        }
+
+        /// <summary>   Query if this object is button selected. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/22. </remarks>
+        ///
+        /// <returns>   True if button selected, false if not. </returns>
+
+        public bool IsButtonSelected()
+        {
+            return (_nowButton != NOT_SELECT);
+        }
+
+        /// <summary>   Sets now button. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/22. </remarks>
+        ///
+        /// <param name="nowButton">    The now button. </param>
+
+        public void SetNowButton(int nowButton)
+        {
+            _nowButton = nowButton;
+        }
+
+        /// <summary>   Gets now button meal description. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/29. </remarks>
+        ///
+        /// <returns>   The now button meal description. </returns>
+
+        public string GetNowButtonMealDescription()
+        {
+            return _posCustomerSideModel.GetNowButtonMealDescription(_nowButton);
+        }
+
+        /// <summary>   Gets binding list. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+        ///
+        /// <returns>   The binding list. </returns>
+
+        public IList GetBindingList()
+        {
+            return _posCustomerSideModel.GetBindingList();
+        }
+
+        /// <summary>   Deletes the meal by index described by index. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+        ///
+        /// <param name="index">    Zero-based index of the. </param>
+
+        public void DeleteMealByIndex(int index)
+        {
+            _posCustomerSideModel.DeleteMealByIndex(index);
+        }
+
+        /// <summary>   Gets the order. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+        ///
+        /// <returns>   The order. </returns>
+
+        public Order GetOrder()
+        {
+            return _posCustomerSideModel.GetOrder();
+        }
+
+        /// <summary>   Gets a point. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
+        ///
+        /// <param name="index">    Zero-based index of the. </param>
+        ///
+        /// <returns>   The point. </returns>
+
+        private Point GetPoint(int index)
+        {
+            return new Point(LOCATION_X + BUTTON_SPACE * ((index % PAGE_SIZE) % BUTTON_EACH_LINE), LOCATION_Y + BUTTON_SPACE * ((index % PAGE_SIZE) / BUTTON_EACH_LINE));
+        }
+
+        /// <summary>   Gets meal count by category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
+        ///
+        /// <param name="name"> The name. </param>
+        ///
+        /// <returns>   The meal count by category. </returns>
+
+        public int GetMealCountByCategory(string name)
+        {
+            return _posCustomerSideModel.GetMealCountByCategory(name);
+        }
     }
 }

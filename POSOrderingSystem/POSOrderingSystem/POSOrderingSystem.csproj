@@ -32,6 +32,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,7 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\OrderItem.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\PosRestaurantSideModel.cs" />
     <Compile Include="Model\PosCustomerSideModel.cs" />
     <Compile Include="POSCustomerSideForm.cs">
       <SubType>Form</SubType>
@@ -61,6 +76,7 @@
     <Compile Include="POSRestaurantSideForm.Designer.cs">
       <DependentUpon>POSRestaurantSideForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresentationModel\RestaurantFormPresentationModel.cs" />
     <Compile Include="PresentationModel\CustomerFormPresentationModel.cs" />
     <Compile Include="PresentationModel\StartUpFormPresentationModel.cs" />
     <Compile Include="Program.cs" />
@@ -89,6 +105,11 @@
     <EmbeddedResource Include="StartUpForm.resx">
       <DependentUpon>StartUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\POSOrderingSystem.Model.Category.datasource" />
+    <None Include="Properties\DataSources\POSOrderingSystem.Model.Meal.datasource" />
+    <None Include="Properties\DataSources\POSOrderingSystem.Model.Order.datasource" />
+    <None Include="Properties\DataSources\POSOrderingSystem.Model.OrderItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,12 +124,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="meals.xml">
+    <Content Include="Resource\Meals.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Resource\Categorys.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj">
+      <Project>{82b50731-be90-433f-bb6e-9b509c5f3b7c}</Project>
+      <Name>DataGridViewNumericUpDownElements</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

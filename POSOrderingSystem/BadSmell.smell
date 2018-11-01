@@ -188,12 +188,12 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>A syntax error has been discovered in file E:\WP_107_HW2\104590045\104590045\POSOrderingSystem\Model\Meal.cs on line 59.</SmellType>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\Model\Category.cs on line 65.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>POSOrderingSystem</Project>
-              <File>Meal.cs</File>
-              <Line>59</Line>
+              <File>Category.cs</File>
+              <Line>65</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -203,17 +203,507 @@
             </Smell>
             <Smell>
               <Id>2</Id>
-              <SmellType>A syntax error has been discovered in file E:\WP_107_HW2\104590045\104590045\POSOrderingSystem\POSCustomerSideForm.cs on line 47.</SmellType>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\Model\Meal.cs on line 128.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>POSOrderingSystem</Project>
-              <File>POSCustomerSideForm.cs</File>
-              <Line>47</Line>
+              <File>Meal.cs</File>
+              <Line>128</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
               <EndCol>0</EndCol>
               <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\Model\Order.cs on line 68.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>Order.cs</File>
+              <Line>68</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\Model\OrderItem.cs on line 145.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>OrderItem.cs</File>
+              <Line>145</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\Model\PosCustomerSideModel.cs on line 19.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>PosCustomerSideModel.cs</File>
+              <Line>19</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\Model\PosRestaurantSideModel.cs on line 102.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>PosRestaurantSideModel.cs</File>
+              <Line>102</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\POSCustomerSideForm.cs on line 73.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSCustomerSideForm.cs</File>
+              <Line>73</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>158</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>162</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>174</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>178</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>283</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>288</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>300</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>15</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>POSRestaurantSideForm.cs</File>
+              <Line>304</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>16</Id>
+              <SmellType>A syntax error has been discovered in file D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\PresentationModel\CustomerFormPresentationModel.cs on line 185.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>CustomerFormPresentationModel.cs</File>
+              <Line>185</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>17</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 40232654</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>Program.cs</File>
+              <Line>22</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>18</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 20016842</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>Program.cs</File>
+              <Line>23</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>19</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 22770570</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>Program.cs</File>
+              <Line>28</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>20</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 61428656</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>Program.cs</File>
+              <Line>39</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>21</Id>
+              <SmellType>Static method and fields(濫用Static)</SmellType>
+              <HashCode>StaticMethodAndFields 20796194</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>Program.cs</File>
+              <Line>66</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>22</Id>
+              <SmellType>Unresolved warnings(忽視警告)-Remove the unused private method 'ShouldSerializeIncrement'.</SmellType>
+              <HashCode>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn.cs.Unresolved warnings(忽視警告)-Remove the unused private method 'ShouldSerializeIncrement'..137</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements</Project>
+              <File>DataGridViewNumericUpDownColumn.cs</File>
+              <Line>137</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>23</Id>
+              <SmellType>Unresolved warnings(忽視警告)-Complete the task associated to this 'TODO' comment.</SmellType>
+              <HashCode>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn.cs.Unresolved warnings(忽視警告)-Complete the task associated to this 'TODO' comment..181</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements</Project>
+              <File>DataGridViewNumericUpDownColumn.cs</File>
+              <Line>181</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>24</Id>
+              <SmellType>Unresolved warnings(忽視警告)-Remove the unused private method 'ShouldSerializeMaximum'.</SmellType>
+              <HashCode>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn.cs.Unresolved warnings(忽視警告)-Remove the unused private method 'ShouldSerializeMaximum'..189</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements</Project>
+              <File>DataGridViewNumericUpDownColumn.cs</File>
+              <Line>189</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>25</Id>
+              <SmellType>Unresolved warnings(忽視警告)-Complete the task associated to this 'TODO' comment.</SmellType>
+              <HashCode>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn.cs.Unresolved warnings(忽視警告)-Complete the task associated to this 'TODO' comment..233</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements</Project>
+              <File>DataGridViewNumericUpDownColumn.cs</File>
+              <Line>233</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>26</Id>
+              <SmellType>Unresolved warnings(忽視警告)-Remove the unused private method 'ShouldSerializeMinimum'.</SmellType>
+              <HashCode>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn.cs.Unresolved warnings(忽視警告)-Remove the unused private method 'ShouldSerializeMinimum'..241</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements</Project>
+              <File>DataGridViewNumericUpDownColumn.cs</File>
+              <Line>241</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>27</Id>
+              <SmellType>Unresolved warnings(忽視警告)-Complete the task associated to this 'TODO' comment.</SmellType>
+              <HashCode>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn.cs.Unresolved warnings(忽視警告)-Complete the task associated to this 'TODO' comment..285</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements</Project>
+              <File>DataGridViewNumericUpDownColumn.cs</File>
+              <Line>285</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>28</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>118 目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\POSCustomerSideForm.cs</File>
+              <Line>118</Line>
+              <StartLine>118</StartLine>
+              <StartCol>29</StartCol>
+              <EndLine>118</EndLine>
+              <EndCol>86</EndCol>
+              <Comment>目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>29</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>127 目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\POSCustomerSideForm.cs</File>
+              <Line>127</Line>
+              <StartLine>119</StartLine>
+              <StartCol>27</StartCol>
+              <EndLine>127</EndLine>
+              <EndCol>21</EndCol>
+              <Comment>目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>30</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>129 目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\POSCustomerSideForm.cs</File>
+              <Line>129</Line>
+              <StartLine>128</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>129</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>31</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>130 目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\POSCustomerSideForm.cs</File>
+              <Line>130</Line>
+              <StartLine>129</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>130</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>32</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>131 目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：2次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\POSCustomerSideForm.cs</File>
+              <Line>131</Line>
+              <StartLine>130</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>131</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 POSOrderingSystem.POSCustomerSideForm，使用物件的方法或屬性次數：2次，Envy到對象物件 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetButtonInfo(int, int) 以及 POSOrderingSystem.PresentationModel.CustomerFormPresentationModel.GetMealCountByCategory(string)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>33</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>95 目前物件 POSOrderingSystem.Model.Order，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.Model.OrderItem，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：POSOrderingSystem.Model.OrderItem.Quantity 以及 POSOrderingSystem.Model.OrderItem.Name</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>POSOrderingSystem</Project>
+              <File>D:\University\windows-programming-hw1\POSOrderingSystem\POSOrderingSystem\Model\Order.cs</File>
+              <Line>95</Line>
+              <StartLine>94</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>95</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 POSOrderingSystem.Model.Order，使用物件的方法或屬性次數：0次，Envy到對象物件 POSOrderingSystem.Model.OrderItem，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：POSOrderingSystem.Model.OrderItem.Quantity 以及 POSOrderingSystem.Model.OrderItem.Name</Comment>
               <Auto>false</Auto>
             </Smell>
           </Reviews>
@@ -223,9 +713,16 @@
             <string>POSOrderingSystem\POSOrderingSystem.Meal.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..14</string>
             <string>POSOrderingSystem\POSOrderingSystem.Meal.cs.Unresolved warnings(忽視警告)-Make this an auto-implemented property and remove its backing field..25</string>
           </HashCodeIgnoreList>
-          <HashCodeRequestIgnoreList />
+          <HashCodeRequestIgnoreList>
+            <string>SpacingAndNewLine9</string>
+          </HashCodeRequestIgnoreList>
           <AnalysisFileManager>
             <AnalysisFiles>
+              <AnalysisFile>
+                <RelativePath>Model\Category.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model\Meal.cs</RelativePath>
                 <ProjectName>POSOrderingSystem</ProjectName>
@@ -237,7 +734,17 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Model\OrderItem.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\PosCustomerSideModel.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\PosRestaurantSideModel.cs</RelativePath>
                 <ProjectName>POSOrderingSystem</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -263,6 +770,11 @@
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>PresentationModel\CustomerFormPresentationModel.cs</RelativePath>
+                <ProjectName>POSOrderingSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\RestaurantFormPresentationModel.cs</RelativePath>
                 <ProjectName>POSOrderingSystem</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -301,10 +813,30 @@
                 <ProjectName>POSOrderingSystem</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DataGridViewNumericUpDownCell.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DataGridViewNumericUpDownColumn.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>DataGridViewNumericUpDownEditingControl.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
+                <ProjectName>DataGridViewNumericUpDownElements</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>930</ProductionLoc>
-          <TestLoc>0</TestLoc>
+          <ProductionLoc>1786</ProductionLoc>
+          <TestLoc>1467</TestLoc>
         </CodeReview>
       </Data>
     </div>
