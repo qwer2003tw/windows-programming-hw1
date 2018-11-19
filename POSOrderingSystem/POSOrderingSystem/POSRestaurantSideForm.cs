@@ -5,7 +5,6 @@
 using POSOrderingSystem.Model;
 using POSOrderingSystem.PresentationModel;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
@@ -35,12 +34,24 @@ namespace POSOrderingSystem
         public POSRestaurantSideForm(BindingList<Category> categories, BindingList<Meal> meals)
         {
             _restaurantFormPresentationModel = new RestaurantFormPresentationModel(categories, meals);
+            _restaurantFormPresentationModel.PropertyChanged += _restaurantFormPresentationModel_PropertyChanged;
             InitializeComponent();
-            _listBox1.DataSource = meals;
             _categoryBindingSource.DataSource = categories;
-            _mealBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedMeal();
-            _mealBindingSource1.DataSource = _restaurantFormPresentationModel.GetMealsByCategory();
-            _categoryBindingSource1.DataSource = _restaurantFormPresentationModel.GetSelectedCategory();
+            mealBindingSource.DataSource = meals;
+            _selectedMealBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedMealClone();
+            _mealsByCategoryBindingSource.DataSource = _restaurantFormPresentationModel.GetMealsByCategory();
+            _selectedCategoryBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedCategory();
+            categoryBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedMealClone().Category;
+        }
+
+        /// <summary>   Restaurant form presentation model property changed. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/13. </remarks>
+
+        private void _restaurantFormPresentationModel_PropertyChanged()
+        {
+            _mealsByCategoryBindingSource.DataSource = _restaurantFormPresentationModel.GetMealsByCategory();
+            _selectedCategoryBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedCategory();
         }
 
         /// <summary>   Event handler. Called by _okButton for click events. </summary>
@@ -66,19 +77,15 @@ namespace POSOrderingSystem
         {
             if (_listBox1.SelectedItem != null)
             {
-                _restaurantFormPresentationModel.SetSelectedMeal(_listBox1.SelectedItem);
-                _mealBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedMeal();
-                _mealCategoryComboBox.SelectedItem = ((Meal)_mealBindingSource.DataSource).Category;
+                _restaurantFormPresentationModel.SetSelectedMeal((Meal)_listBox1.SelectedItem);
+                _selectedMealBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedMealClone();
+                categoryBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedMealClone().Category;
                 _mealAddButton.Text = SAVE;
+                _groupBox1.Text = "Edit Meal";
             }
             else
             {
-                _mealBindingSource.DataSource = _restaurantFormPresentationModel.GetNewMeal();
-                _mealCategoryComboBox.SelectedIndex = 0;
-                _mealNameTextBox.Text = string.Empty;
-                _mealPriceTextBox.Text = string.Empty;
-                _mealDescriptionRichTextBox.Text = string.Empty;
-                _imagePathTextBox.Text = string.Empty;
+                _selectedMealBindingSource.DataSource = _restaurantFormPresentationModel.GetNewMeal();
             }
         }
 
@@ -93,6 +100,7 @@ namespace POSOrderingSystem
         {
             _listBox1.ClearSelected();
             _mealAddButton.Text = ADD;
+            _groupBox1.Text = "Add Meal";
             _mealAddButton.Enabled = false;
         }
 
@@ -104,18 +112,6 @@ namespace POSOrderingSystem
         /// <param name="e">        Event information. </param>
 
         private void ChangeMealNameText(object sender, EventArgs e)
-        {
-            GetMealAddOrSaveButtonEnable();
-        }
-
-        /// <summary>   Event handler. Called by textBox3 for text changed events. </summary>
-        ///
-        /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
-        ///
-        /// <param name="sender">   Source of the event. </param>
-        /// <param name="e">        Event information. </param>
-
-        private void ChangeMealPriceText(object sender, EventArgs e)
         {
             GetMealAddOrSaveButtonEnable();
         }
@@ -153,30 +149,15 @@ namespace POSOrderingSystem
 
         private void GetMealSaveButtonEnable()
         {
-            object mealObject = new
-            {
-                name = _mealNameTextBox.Text,
-                price = _mealPriceTextBox.Text,
-                imagePath = _imagePathTextBox.Text,
-                description = _mealDescriptionRichTextBox.Text
-            };
-            _mealAddButton.Enabled = _restaurantFormPresentationModel.GetMealSaveButtonEnable(mealObject, _mealCategoryComboBox.SelectedItem);
+            _mealAddButton.Enabled = _restaurantFormPresentationModel.GetMealSaveButtonEnable();
         }
 
         /// <summary>   Gets meal add button enable. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
-
         private void GetMealAddButtonEnable()
         {
-            object mealObject = new
-            {
-                name = _mealNameTextBox.Text,
-                price = _mealPriceTextBox.Text,
-                imagePath = _imagePathTextBox.Text,
-                description = _mealDescriptionRichTextBox.Text
-            };
-            _mealAddButton.Enabled = _restaurantFormPresentationModel.GetMealAddButtonEnable(mealObject, _mealCategoryComboBox.SelectedItem);
+            _mealAddButton.Enabled = _restaurantFormPresentationModel.GetMealAddButtonEnable();
         }
 
         /// <summary>   Gets category save button enable. </summary>
@@ -218,6 +199,15 @@ namespace POSOrderingSystem
 
         private void ChangeComboBoxSelectedIndex(object sender, EventArgs e)
         {
+            if (_mealCategoryComboBox.SelectedValue == null) return;
+            if (_mealAddButton.Text == ADD)
+            {
+                ((Meal)_selectedMealBindingSource.DataSource).Category = (Category)_mealCategoryComboBox.SelectedValue;
+            }
+            else if (_mealAddButton.Text == SAVE)
+            {
+                _restaurantFormPresentationModel.GetSelectedMealClone().Category = (Category)_mealCategoryComboBox.SelectedValue;
+            }
             GetMealAddOrSaveButtonEnable();
         }
 
@@ -278,15 +268,7 @@ namespace POSOrderingSystem
 
         private void AddMeal()
         {
-            object mealObject = new
-            {
-                name = _mealNameTextBox.Text,
-                price = _mealPriceTextBox.Text,
-                imagePath = _imagePathTextBox.Text,
-                description = _mealDescriptionRichTextBox.Text,
-                category = _mealCategoryComboBox.SelectedItem
-            };
-            _restaurantFormPresentationModel.AddMeal(mealObject);
+            _restaurantFormPresentationModel.AddMeal();
         }
 
         /// <summary>   Saves the meal. </summary>
@@ -295,14 +277,7 @@ namespace POSOrderingSystem
 
         private void SaveMeal()
         {
-            object mealObject = new
-            {
-                name = _mealNameTextBox.Text,
-                price = _mealPriceTextBox.Text,
-                imagePath = _imagePathTextBox.Text,
-                description = _mealDescriptionRichTextBox.Text,
-            };
-            _restaurantFormPresentationModel.SaveMeal(mealObject, _mealCategoryComboBox.SelectedItem);
+            _restaurantFormPresentationModel.SaveMeal();
         }
 
         /// <summary>   Event handler. Called by listBox2 for selected index changed events. </summary>
@@ -317,13 +292,14 @@ namespace POSOrderingSystem
             if (_listBox2.SelectedItem != null)
             {
                 _restaurantFormPresentationModel.SetSelectedCategory(_listBox2.SelectedItem);
-                _mealBindingSource1.DataSource = _restaurantFormPresentationModel.GetMealsByCategory();
-                _categoryBindingSource1.DataSource = _restaurantFormPresentationModel.GetSelectedCategory();
+                _mealsByCategoryBindingSource.DataSource = _restaurantFormPresentationModel.GetMealsByCategory();
+                _selectedCategoryBindingSource.DataSource = _restaurantFormPresentationModel.GetSelectedCategory();
                 _button7.Text = SAVE;
+                _groupBox1.Text = "Edit Meal";
             }
             else if (_listBox2.SelectedItem == null)
             {
-                _mealBindingSource1.DataSource = _restaurantFormPresentationModel.GetNewCategory();
+                _mealsByCategoryBindingSource.DataSource = _restaurantFormPresentationModel.GetNewCategory();
                 _textBox2.Text = string.Empty;
             }
         }
@@ -388,9 +364,21 @@ namespace POSOrderingSystem
             DialogResult result = _openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string path = _openFileDialog.FileName.Replace(projectPath, string.Empty);
+                string path = _openFileDialog.FileName.Replace(projectPath, string.Empty).Trim('\\');
                 _imagePathTextBox.Text = path.Replace("\\", "/");
             }
+        }
+
+        /// <summary>   Event handler. Called by _deleteSelectedMealButton for click events. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Event information. </param>
+
+        private void _deleteSelectedMealButton_Click(object sender, EventArgs e)
+        {
+            _restaurantFormPresentationModel.DeleteSelectMeal();
         }
     }
 }

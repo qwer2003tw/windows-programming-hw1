@@ -15,6 +15,8 @@ namespace POSOrderingSystem.PresentationModel
     {
         /// <summary>   The position restaurant side model. </summary>
         readonly PosRestaurantSideModel _posRestaurantSideModel;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public delegate void PropertyChangedEventHandler();
 
         /// <summary>   Constructor. </summary>
         ///
@@ -26,6 +28,12 @@ namespace POSOrderingSystem.PresentationModel
         public RestaurantFormPresentationModel(BindingList<Category> categories, BindingList<Meal> meals)
         {
             _posRestaurantSideModel = new PosRestaurantSideModel(categories, meals);
+            _posRestaurantSideModel.PropertyChanged += _posRestaurantSideModel_PropertyChanged;
+        }
+
+        private void _posRestaurantSideModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            PropertyChanged();
         }
 
         /// <summary>   Sets selected meal. </summary>
@@ -34,7 +42,7 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <param name="meal"> The meal. </param>
 
-        public void SetSelectedMeal(object meal)
+        public void SetSelectedMeal(Meal meal)
         {
             _posRestaurantSideModel.SelectedMealClone = meal;
             _posRestaurantSideModel.SetOriginalMeal(meal);
@@ -46,7 +54,7 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <returns>   The selected meal. </returns>
 
-        public object GetSelectedMeal()
+        public Meal GetSelectedMealClone()
         {
             return _posRestaurantSideModel.SelectedMealClone;
         }
@@ -77,34 +85,22 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
-        ///
         /// <returns>   True if it succeeds, false if it fails. </returns>
 
-        public bool GetMealSaveButtonEnable(dynamic mealDynamic, object category)
+        public bool GetMealSaveButtonEnable()
         {
-            return _posRestaurantSideModel.GetMealSaveButtonEnable(mealDynamic, category);
+            return _posRestaurantSideModel.GetMealSaveButtonEnable();
         }
 
         /// <summary>   Gets meal add button enable. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
-        ///
         /// <returns>   True if it succeeds, false if it fails. </returns>
 
-        public bool GetMealAddButtonEnable(dynamic dynamic, object category)
+        public bool GetMealAddButtonEnable()
         {
-            return _posRestaurantSideModel.GetMealAddButtonEnable(dynamic, category);
+            return _posRestaurantSideModel.GetMealAddButtonEnable();
         }
 
         /// <summary>   Gets category save button enable. </summary>
@@ -143,9 +139,9 @@ namespace POSOrderingSystem.PresentationModel
         /// <param name="description">  The description. </param>
         /// <param name="category">     The category. </param>
 
-        public void AddMeal(dynamic mealDynamic)
+        public void AddMeal()
         {
-            _posRestaurantSideModel.AddMeal(mealDynamic);
+            _posRestaurantSideModel.AddMeal();
         }
 
         /// <summary>   Saves a meal. </summary>
@@ -158,9 +154,9 @@ namespace POSOrderingSystem.PresentationModel
         /// <param name="description">  The description. </param>
         /// <param name="category">     The category. </param>
 
-        public void SaveMeal(dynamic mealDynamic, object category)
+        public void SaveMeal()
         {
-            _posRestaurantSideModel.SaveMeal(mealDynamic, category);
+            _posRestaurantSideModel.SaveMeal();
         }
 
         /// <summary>   Adds a category. </summary>
@@ -217,6 +213,15 @@ namespace POSOrderingSystem.PresentationModel
         public object GetSelectedCategory()
         {
             return _posRestaurantSideModel.SelectedCategoryClone;
+        }
+
+        /// <summary>   Deletes the select meal. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+
+        public void DeleteSelectMeal()
+        {
+            _posRestaurantSideModel.DeleteSelectMeal();
         }
     }
 }

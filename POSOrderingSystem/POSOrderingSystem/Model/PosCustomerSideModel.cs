@@ -8,13 +8,32 @@ using System.Linq;
 
 namespace POSOrderingSystem.Model
 {
+    /// <summary>   A data Model for the position customer side. </summary>
+    ///
+    /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+
     public class PosCustomerSideModel
     {
+        /// <summary>   Event queue for all listeners interested in _listChanged events. </summary>
         public event ListChangedEventHandler _listChanged;
+
+        /// <summary>   Delegate for handling ListChanged events. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+
         public delegate void ListChangedEventHandler();
+        /// <summary>   The meals. </summary>
         readonly BindingList<Meal> _meals;
+        /// <summary>   The categories. </summary>
         readonly BindingList<Category> _categories;
+        /// <summary>   The order. </summary>
         readonly Order _order;
+        /// <summary>   The selected category. </summary>
+        readonly Category _selectedCategory;
+
+        /// <summary>   Gets the categories. </summary>
+        ///
+        /// <value> The categories. </value>
 
         public BindingList<Category> Categories => _categories;
 
@@ -32,6 +51,7 @@ namespace POSOrderingSystem.Model
             _order = new Order();
             _meals.ListChanged += ListChanged;
             _categories.ListChanged += ListChanged;
+            _selectedCategory = new Category();
         }
 
         /// <summary>   List changed. </summary>
@@ -81,7 +101,8 @@ namespace POSOrderingSystem.Model
 
         public Meal GetMealByIndex(int index)
         {
-            return _meals[index];
+            var meals = new BindingList<Meal>(_meals.Where(meal => meal.Category.Name == _selectedCategory.Name).ToList());
+            return meals[index];
         }
 
         /// <summary>   Gets the order. </summary>
@@ -103,7 +124,7 @@ namespace POSOrderingSystem.Model
 
         public void AddNowButtonMeal(int nowButton)
         {
-            _order.AddMeal(_meals[nowButton]);
+            _order.AddMeal(GetMealsByCategory()[nowButton]);
         }
 
         /// <summary>   Gets total of price. </summary>
@@ -132,16 +153,41 @@ namespace POSOrderingSystem.Model
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name"> The name. </param>
-        ///
         /// <returns>   The meal count by category. </returns>
+        ///
+        /// ### <param name="name"> The name. </param>
 
-        public int GetMealCountByCategory(string name)
+        public int GetMealCountByCategory()
         {
             var list = from meal in _meals
-                       where meal.Category.Name == name
+                       where meal.Category.Name == _selectedCategory.Name
                        select meal;
             return list.Count();
+        }
+
+        /// <summary>   Gets meals by category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+        ///
+        /// <returns>   The meals by category. </returns>
+
+        public BindingList<Meal> GetMealsByCategory()
+        {
+            var list = from meal in _meals
+                       where meal.Category.Name == _selectedCategory.Name
+                       select meal;
+            return new BindingList<Meal>(list.ToList());
+        }
+
+        /// <summary>   Sets selected category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+        ///
+        /// <param name="category"> The category. </param>
+
+        public void SetSelectedCategory(string category)
+        {
+            _selectedCategory.Name = category;
         }
     }
 }

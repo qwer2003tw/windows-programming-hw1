@@ -5,3 +5,7 @@ POSOrderingSystem/POSOrderingSystem/StyleCop.Cache
 *.Cache
 POSOrderingSystem/DataGridViewNumericUpDownElements/bin/
 POSOrderingSystem/DataGridViewNumericUpDownElements/obj/
+POSOrderingSystem/POSOrderingSystemTests/bin/
+POSOrderingSystem/POSOrderingSystemTests/obj/
+POSOrderingSystem/packages/
+POSOrderingSystem/TestResults/

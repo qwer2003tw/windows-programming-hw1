@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSOrderingSystem", "POSOrd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewNumericUpDownElements", "DataGridViewNumericUpDownElements\DataGridViewNumericUpDownElements.csproj", "{82B50731-BE90-433F-BB6E-9B509C5F3B7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSOrderingSystemTests", "POSOrderingSystemTests\POSOrderingSystemTests.csproj", "{BACF7965-F2A9-4B32-8D50-92352AF0F59F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B50731-BE90-433F-BB6E-9B509C5F3B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACF7965-F2A9-4B32-8D50-92352AF0F59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACF7965-F2A9-4B32-8D50-92352AF0F59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACF7965-F2A9-4B32-8D50-92352AF0F59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACF7965-F2A9-4B32-8D50-92352AF0F59F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,6 @@
 using POSOrderingSystem.Model;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -75,18 +74,14 @@ namespace POSOrderingSystem.PresentationModel
         /// <param name="pageIndex">    Zero-based index of the page. </param>
         ///
         /// <returns>   True if it succeeds, false if it fails. </returns>
-        ///
-        /// ### <param name="buttons">  The buttons. </param>
-        ///
-        /// ### <param name="mealsSize">    Size of the meals. </param>
 
-        public bool GetButtonEnable(int index, int pageIndex,string tab)
+        public bool GetButtonEnable(int index, int pageIndex)
         {
-            
+
             switch (index)
             {
                 case 1:
-                    return (pageIndex != (GetMealCountByCategory(tab) / PAGE_SIZE) + 1);
+                    return (pageIndex != (GetMealCountByCategory() / PAGE_SIZE) + 1);
                 case 0:
                     return (pageIndex != START_PAGE);
                 default:
@@ -134,10 +129,6 @@ namespace POSOrderingSystem.PresentationModel
         /// <summary>   Gets now button data. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 10/9/2018. </remarks>
-        ///
-        /// ### <param name="nowButton">    The now button. </param>
-        ///
-        /// ### <returns>   An array of object. </returns>
 
         public void AddNowButtonMeal()
         {
@@ -166,9 +157,9 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <returns>   An array of object. </returns>
 
-        public object[] GetButtonInfo(int index, int offset)
+        public object[] GetButtonInfo(int index)
         {
-            Object[] result = { GetButtonText(index), GetPoint(index - offset), GetImagePath(index) };
+            Object[] result = { GetButtonText(index), GetPoint(index), GetImagePath(index) };
             return result;
         }
 
@@ -180,9 +171,9 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <returns>   The page label text. </returns>
 
-        public string GetPageLabelText(int pageIndex, string tab)
+        public string GetPageLabelText(int pageIndex)
         {
-            return $"Page : {pageIndex}/{(GetMealCountByCategory(tab) / PAGE_SIZE) + 1}";
+            return $"Page : {pageIndex}/{(GetMealCountByCategory() / PAGE_SIZE) + 1}";
         }
 
         /// <summary>   Query if this object is button selected. </summary>
@@ -268,13 +259,46 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name"> The name. </param>
-        ///
         /// <returns>   The meal count by category. </returns>
+        ///
+        /// ### <param name="name"> The name. </param>
 
-        public int GetMealCountByCategory(string name)
+        public int GetMealCountByCategory()
         {
-            return _posCustomerSideModel.GetMealCountByCategory(name);
+            return _posCustomerSideModel.GetMealCountByCategory();
+        }
+
+        /// <summary>   Gets meals by category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+        ///
+        /// <returns>   The meals by category. </returns>
+
+        public BindingList<Meal> GetMealsByCategory()
+        {
+            return _posCustomerSideModel.GetMealsByCategory();
+        }
+
+        /// <summary>   Gets the categories. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+        ///
+        /// <returns>   The categories. </returns>
+
+        public BindingList<Category> GetCategories()
+        {
+            return _posCustomerSideModel.Categories;
+        }
+
+        /// <summary>   Sets selected category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+        ///
+        /// <param name="category"> The category. </param>
+
+        public void SetSelectedCategory(string category)
+        {
+            _posCustomerSideModel.SetSelectedCategory(category);
         }
     }
 }

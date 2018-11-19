@@ -14,12 +14,13 @@ namespace POSOrderingSystem.Model
     ///
     /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
 
-    public class PosRestaurantSideModel
+    public class PosRestaurantSideModel : INotifyPropertyChanged
     {
         /// <summary>   The selected meal. </summary>
         private Meal _selectedMeal;
         /// <summary>   The selected meal clone. </summary>
         private Meal _selectedMealClone;
+        private Meal _newMeal;
         /// <summary>   The selected category. </summary>
         private Category _selectedCategory;
         /// <summary>   The selected category clone. </summary>
@@ -28,8 +29,6 @@ namespace POSOrderingSystem.Model
         private readonly BindingList<Category> _categories;
         /// <summary>   The meals. </summary>
         private readonly BindingList<Meal> _meals;
-        /// <summary>   Category the meals by belongs to. </summary>
-        private readonly BindingList<Meal> _mealsByCategory;
         /// <summary>   Event queue for all listeners interested in PropertyChanged events. </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -48,14 +47,13 @@ namespace POSOrderingSystem.Model
             _selectedMealClone = new Meal();
             _selectedCategory = new Category();
             _selectedCategoryClone = new Category();
-            _mealsByCategory = new BindingList<Meal>();
         }
 
         /// <summary>   Gets or sets the selected meal clone. </summary>
         ///
         /// <value> The selected meal clone. </value>
 
-        public object SelectedMealClone
+        public Meal SelectedMealClone
         {
             get
             {
@@ -63,7 +61,15 @@ namespace POSOrderingSystem.Model
             }
             set
             {
-                _selectedMealClone = ((Meal)value).Clone();
+                _selectedMealClone = value.Clone();
+                NotifyPropertyChanged(nameof(SelectedMealClone));
+            }
+        }
+        public object SelectedMeal
+        {
+            get
+            {
+                return _selectedMeal;
             }
         }
 
@@ -80,6 +86,7 @@ namespace POSOrderingSystem.Model
             set
             {
                 _selectedCategoryClone = ((Category)value).Clone();
+                NotifyPropertyChanged(nameof(SelectedCategoryClone));
             }
         }
 
@@ -99,8 +106,6 @@ namespace POSOrderingSystem.Model
             }
         }
 
-        public BindingList<Meal> MealsByCategory1 => _mealsByCategory;
-
         /// <summary>   Gets a new meal. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
@@ -109,13 +114,15 @@ namespace POSOrderingSystem.Model
 
         public Meal GetNewMeal()
         {
-            return new Meal()
+            _newMeal = new Meal()
             {
                 Price = 0,
                 Descript = string.Empty,
                 ImagePath = string.Empty,
-                Name = string.Empty
+                Name = string.Empty,
+                Category = _categories[0]
             };
+            return _newMeal;
         }
 
         /// <summary>   Gets a new category. </summary>
@@ -136,38 +143,27 @@ namespace POSOrderingSystem.Model
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
-        ///
         /// <returns>   True if it succeeds, false if it fails. </returns>
 
-        public bool GetMealSaveButtonEnable(dynamic dynamic, object category)
+        public bool GetMealSaveButtonEnable()
         {
-            string name = dynamic.name;
-            string price = dynamic.price;
-            string imagePath = dynamic.imagePath;
-            string description = dynamic.description;
-            if (category == null) return true;
-            if (_selectedMeal.Category.Name != ((Category)category).Name)
+            if (_selectedMeal.Category.Name != _selectedMealClone.Category.Name)
             {
                 return true;
             }
-            if (_selectedMeal.Descript != description)
+            if (_selectedMeal.Descript != _selectedMealClone.Descript)
             {
                 return true;
             }
-            if (_selectedMeal.ImagePath != imagePath)
+            if (_selectedMeal.ImagePath != _selectedMealClone.ImagePath)
             {
                 return true;
             }
-            if (_selectedMeal.Name != name)
+            if (_selectedMeal.Name != _selectedMealClone.Name)
             {
                 return true;
             }
-            if (_selectedMeal.Price != (string.IsNullOrEmpty(price) ? 0 : Int64.Parse(price)))
+            if (_selectedMeal.Price != _selectedMealClone.Price)
             {
                 return true;
             }
@@ -178,25 +174,15 @@ namespace POSOrderingSystem.Model
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
-        ///
         /// <returns>   True if it succeeds, false if it fails. </returns>
 
-        public bool GetMealAddButtonEnable(dynamic dynamic,object category)
+        public bool GetMealAddButtonEnable()
         {
-            if (string.IsNullOrEmpty(dynamic.imagePath))
+            if (string.IsNullOrEmpty(_newMeal.ImagePath))
             {
                 return false;
             }
-            if (string.IsNullOrEmpty(dynamic.name))
-            {
-                return false;
-            }
-            if (string.IsNullOrEmpty(dynamic.price))
+            if (string.IsNullOrEmpty(_newMeal.Name))
             {
                 return false;
             }
@@ -236,42 +222,38 @@ namespace POSOrderingSystem.Model
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
+        /// <param name="d">    The name. </param>
+        ///
+        /// ### <param name="price">    The price. </param>
+        ///
+        /// ### <param name="imagePath">    Full pathname of the image file. </param>
+        /// ### <param name="description">  The description. </param>
+        /// ### <param name="category">     The category. </param>
 
-        public void AddMeal(dynamic d)
+        public void AddMeal()
         {
-            Meal meal = new Meal()
-            {
-                Category = (Category)d.category,
-                Descript = d.description,
-                ImagePath = d.imagePath,
-                Name = d.name,
-                Price = Int32.Parse(d.price)
-            };
-            _meals.Add(meal);
+            _meals.Add(_newMeal);
         }
 
         /// <summary>   Saves a meal. </summary>
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
+        /// <param name="dynamic">  The name. </param>
+        /// <param name="category"> The category. </param>
+        ///
+        /// ### <param name="price">    The price. </param>
+        ///
+        /// ### <param name="imagePath">    Full pathname of the image file. </param>
+        /// ### <param name="description">  The description. </param>
 
-        public void SaveMeal(dynamic dynamic,object category)
+        public void SaveMeal()
         {
-            _selectedMeal.Name = dynamic.name;
-            _selectedMeal.Price = Int32.Parse(dynamic.price);
-            _selectedMeal.ImagePath = dynamic.imagePath;
-            _selectedMeal.Descript = dynamic.description;
-            _selectedMeal.Category = (Category)category;
+            _selectedMeal.Category = _selectedMealClone.Category;
+            _selectedMeal.Name = _selectedMealClone.Name;
+            _selectedMeal.Price = _selectedMealClone.Price;
+            _selectedMeal.ImagePath = _selectedMealClone.ImagePath;
+            _selectedMeal.Descript = _selectedMealClone.Descript;
         }
 
         /// <summary>   Adds a category. </summary>
@@ -332,6 +314,15 @@ namespace POSOrderingSystem.Model
         private void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>   Deletes the select meal. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+
+        public void DeleteSelectMeal()
+        {
+            _meals.Remove(_selectedMeal);
         }
     }
 }

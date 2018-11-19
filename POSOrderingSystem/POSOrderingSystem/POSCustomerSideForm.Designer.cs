@@ -40,9 +40,6 @@
             this._nextButton = new System.Windows.Forms.Button();
             this._previousButton = new System.Windows.Forms.Button();
             this._mealsDataGridView = new System.Windows.Forms.DataGridView();
-            this._totalLabel = new System.Windows.Forms.Label();
-            this._backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this._tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this._dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,13 +47,16 @@
             this._dataGridViewTextBoxColumn5 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
             this._dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._orderItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._totalLabel = new System.Windows.Forms.Label();
             this._orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this._tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._mealGroupBox.SuspendLayout();
             this._tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._mealsDataGridView)).BeginInit();
-            this._tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._orderItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._orderBindingSource)).BeginInit();
+            this._tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _mealGroupBox
@@ -81,10 +81,10 @@
             this._tabControl1.Controls.Add(this._tabPage1);
             this._tabControl1.Controls.Add(this._tabPage2);
             this._tabControl1.Controls.Add(this._tabPage3);
-            this._tabControl1.Location = new System.Drawing.Point(11, 21);
+            this._tabControl1.Location = new System.Drawing.Point(9, 21);
             this._tabControl1.Name = "_tabControl1";
             this._tabControl1.SelectedIndex = 0;
-            this._tabControl1.Size = new System.Drawing.Size(456, 460);
+            this._tabControl1.Size = new System.Drawing.Size(478, 460);
             this._tabControl1.TabIndex = 14;
             this._tabControl1.SelectedIndexChanged += new System.EventHandler(this.ChangedTabControlSelectedIndex);
             // 
@@ -93,7 +93,7 @@
             this._tabPage1.Location = new System.Drawing.Point(4, 25);
             this._tabPage1.Name = "_tabPage1";
             this._tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this._tabPage1.Size = new System.Drawing.Size(448, 431);
+            this._tabPage1.Size = new System.Drawing.Size(470, 431);
             this._tabPage1.TabIndex = 0;
             this._tabPage1.Text = "壽司";
             this._tabPage1.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             this._tabPage2.Location = new System.Drawing.Point(4, 25);
             this._tabPage2.Name = "_tabPage2";
             this._tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this._tabPage2.Size = new System.Drawing.Size(448, 431);
+            this._tabPage2.Size = new System.Drawing.Size(470, 431);
             this._tabPage2.TabIndex = 1;
             this._tabPage2.Text = "甜點";
             this._tabPage2.UseVisualStyleBackColor = true;
@@ -113,17 +113,17 @@
             this._tabPage3.Location = new System.Drawing.Point(4, 25);
             this._tabPage3.Name = "_tabPage3";
             this._tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this._tabPage3.Size = new System.Drawing.Size(448, 431);
+            this._tabPage3.Size = new System.Drawing.Size(470, 431);
             this._tabPage3.TabIndex = 2;
             this._tabPage3.Text = "飲料";
             this._tabPage3.UseVisualStyleBackColor = true;
             // 
             // _descriptionTextBox
             // 
-            this._descriptionTextBox.Location = new System.Drawing.Point(15, 487);
+            this._descriptionTextBox.Location = new System.Drawing.Point(13, 487);
             this._descriptionTextBox.Name = "_descriptionTextBox";
             this._descriptionTextBox.ReadOnly = true;
-            this._descriptionTextBox.Size = new System.Drawing.Size(452, 75);
+            this._descriptionTextBox.Size = new System.Drawing.Size(470, 75);
             this._descriptionTextBox.TabIndex = 13;
             this._descriptionTextBox.Text = "";
             // 
@@ -195,6 +195,55 @@
             this._mealsDataGridView.TabIndex = 1;
             this._mealsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickMealsDataGridViewCellContent);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this._dataGridViewTextBoxColumn1.DataPropertyName = "Delete";
+            this._dataGridViewTextBoxColumn1.HeaderText = "Delete";
+            this._dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this._dataGridViewTextBoxColumn1.ReadOnly = true;
+            this._dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this._dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // _dataGridViewTextBoxColumn2
+            // 
+            this._dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this._dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this._dataGridViewTextBoxColumn2.Name = "_dataGridViewTextBoxColumn2";
+            this._dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // _dataGridViewTextBoxColumn3
+            // 
+            this._dataGridViewTextBoxColumn3.DataPropertyName = "Price";
+            this._dataGridViewTextBoxColumn3.HeaderText = "Unit Price";
+            this._dataGridViewTextBoxColumn3.Name = "_dataGridViewTextBoxColumn3";
+            this._dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // _dataGridViewTextBoxColumn4
+            // 
+            this._dataGridViewTextBoxColumn4.DataPropertyName = "Category";
+            this._dataGridViewTextBoxColumn4.HeaderText = "Category";
+            this._dataGridViewTextBoxColumn4.Name = "_dataGridViewTextBoxColumn4";
+            this._dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // _dataGridViewTextBoxColumn5
+            // 
+            this._dataGridViewTextBoxColumn5.DataPropertyName = "Quantity";
+            this._dataGridViewTextBoxColumn5.HeaderText = "Qty";
+            this._dataGridViewTextBoxColumn5.Name = "_dataGridViewTextBoxColumn5";
+            this._dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this._dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // _dataGridViewTextBoxColumn6
+            // 
+            this._dataGridViewTextBoxColumn6.DataPropertyName = "Subtotal";
+            this._dataGridViewTextBoxColumn6.HeaderText = "Subtotal";
+            this._dataGridViewTextBoxColumn6.Name = "_dataGridViewTextBoxColumn6";
+            this._dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // _orderItemBindingSource
+            // 
+            this._orderItemBindingSource.DataSource = typeof(POSOrderingSystem.Model.OrderItem);
+            // 
             // _totalLabel
             // 
             this._totalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -209,6 +258,10 @@
             this._totalLabel.TabIndex = 2;
             this._totalLabel.Text = "Total:0元";
             this._totalLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // _orderBindingSource
+            // 
+            this._orderBindingSource.DataSource = typeof(POSOrderingSystem.Model.Order);
             // 
             // _tableLayoutPanel1
             // 
@@ -227,59 +280,6 @@
             this._tableLayoutPanel1.Size = new System.Drawing.Size(1110, 671);
             this._tableLayoutPanel1.TabIndex = 3;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this._dataGridViewTextBoxColumn1.DataPropertyName = "Delete";
-            this._dataGridViewTextBoxColumn1.HeaderText = "Delete";
-            this._dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this._dataGridViewTextBoxColumn1.ReadOnly = true;
-            this._dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this._dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this._dataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this._dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this._dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this._dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this._dataGridViewTextBoxColumn3.DataPropertyName = "Price";
-            this._dataGridViewTextBoxColumn3.HeaderText = "Unit Price";
-            this._dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this._dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this._dataGridViewTextBoxColumn4.DataPropertyName = "Category";
-            this._dataGridViewTextBoxColumn4.HeaderText = "Category";
-            this._dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this._dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this._dataGridViewTextBoxColumn5.DataPropertyName = "Quantity";
-            this._dataGridViewTextBoxColumn5.HeaderText = "Qty";
-            this._dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this._dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this._dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this._dataGridViewTextBoxColumn6.DataPropertyName = "Subtotal";
-            this._dataGridViewTextBoxColumn6.HeaderText = "Subtotal";
-            this._dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this._dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // _orderItemBindingSource
-            // 
-            this._orderItemBindingSource.DataSource = typeof(POSOrderingSystem.Model.OrderItem);
-            // 
-            // _orderBindingSource
-            // 
-            this._orderBindingSource.DataSource = typeof(POSOrderingSystem.Model.Order);
-            // 
             // POSCustomerSideForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -288,14 +288,15 @@
             this.Controls.Add(this._tableLayoutPanel1);
             this.Name = "POSCustomerSideForm";
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.POSCustomerSideForm_Shown);
             this._mealGroupBox.ResumeLayout(false);
             this._mealGroupBox.PerformLayout();
             this._tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._mealsDataGridView)).EndInit();
-            this._tableLayoutPanel1.ResumeLayout(false);
-            this._tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._orderItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._orderBindingSource)).EndInit();
+            this._tableLayoutPanel1.ResumeLayout(false);
+            this._tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -310,14 +311,14 @@
         private System.Windows.Forms.Label _totalLabel;
         private System.Windows.Forms.Label _pageLabel;
         private System.Windows.Forms.RichTextBox _descriptionTextBox;
-        private System.Windows.Forms.TabControl _tabControl1;
-        private System.Windows.Forms.TabPage _tabPage1;
-        private System.Windows.Forms.TabPage _tabPage2;
-        private System.Windows.Forms.TabPage _tabPage3;
         private System.ComponentModel.BackgroundWorker _backgroundWorker1;
         private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel1;
         private System.Windows.Forms.BindingSource _orderItemBindingSource;
         private System.Windows.Forms.BindingSource _orderBindingSource;
+        private System.Windows.Forms.TabControl _tabControl1;
+        private System.Windows.Forms.TabPage _tabPage1;
+        private System.Windows.Forms.TabPage _tabPage2;
+        private System.Windows.Forms.TabPage _tabPage3;
         private System.Windows.Forms.DataGridViewButtonColumn _dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn _dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn _dataGridViewTextBoxColumn3;

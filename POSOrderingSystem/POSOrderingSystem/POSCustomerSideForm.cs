@@ -27,8 +27,6 @@ namespace POSOrderingSystem
         const int START_PAGE = 1;
         /// <summary>   Size of the button. </summary>
         const int BUTTON_SIZE = 100;
-        /// <summary>   The buttons. </summary>
-        List<List<Button>> _buttons = new List<List<Button>>();
         /// <summary>   Zero-based index of the page. </summary>
         int _pageIndex;
         /// <summary>   The customer form presentation model. </summary>
@@ -46,8 +44,6 @@ namespace POSOrderingSystem
             InitializeComponent();
             _customerFormPresentationModel = new CustomerFormPresentationModel(categories, meals);
             _pageIndex = START_PAGE;
-            InitialButton();
-            LoadPage(_pageIndex, true);
             _mealsDataGridView.DataSource = _customerFormPresentationModel.GetBindingList();
             _customerFormPresentationModel._listChanged += _customerFormPresentationModel__listChanged;
             _orderBindingSource.DataSource = _customerFormPresentationModel.GetOrder();
@@ -63,16 +59,12 @@ namespace POSOrderingSystem
             _mealsDataGridView.Refresh();
             _totalLabel.Update();
             _totalLabel.Refresh();
-            int k = 0;
-            for (int j = 0; j < _tabControl1.TabCount; j++)
+            var buttons = _tabControl1.SelectedTab.Controls.OfType<Button>();
+            foreach (var btn in buttons)
             {
-                for (int i = 0; i < _buttons[j].Count; i++)
-                {
-                    Object[] info = _customerFormPresentationModel.GetButtonInfo(i, k);
-                    _buttons[j][i].Text = info[0].ToString();
-                    _buttons[j][i].Image = Image.FromFile($@"..\..\{info[2]}");
-                }
-                k += _buttons[j].Count;
+                Object[] info = _customerFormPresentationModel.GetButtonInfo(Array.IndexOf(buttons.ToArray(), btn));
+                btn.Text = info[0].ToString();
+                btn.Image = Image.FromFile($@"..\..\{info[2]}");
             }
         }
 
@@ -83,57 +75,30 @@ namespace POSOrderingSystem
         /// <param> Zero-based index of the page. </param>
         /// <param> The meals. </param>
 
-        protected void LoadPage(int pageIndex, bool visible)
+        protected void LoadPage(int pageIndex)
         {
-            int i = _tabControl1.SelectedIndex;
-            var tab = _tabControl1.GetControl(i);
-            var showButtons = _buttons[i].Skip((pageIndex - 1) * PAGE_SIZE).Take(PAGE_SIZE);
-
-            foreach (var btn in showButtons)
+            string projectPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+            _tabControl1.SelectedTab.Controls.Clear();
+            var meals = _customerFormPresentationModel.GetMealsByCategory().Skip((pageIndex - 1) * PAGE_SIZE).Take(PAGE_SIZE);
+            foreach (var meal in meals)
             {
-                btn.Visible = visible;
-            }
-            _previousButton.Enabled = _customerFormPresentationModel.GetButtonEnable((int)Buttons.Previous, pageIndex, tab.Text);
-            _nextButton.Enabled = _customerFormPresentationModel.GetButtonEnable((int)Buttons.Next, pageIndex, tab.Text);
-            _pageLabel.Text = _customerFormPresentationModel.GetPageLabelText(pageIndex, tab.Text);
-
-        }
-
-        /// <summary>   Initializes the button. </summary>
-        ///
-        /// <remarks>   Chen-Tai,Peng, 9/25/2018. </remarks>
-        ///
-        /// ### <param> The meals. </param>
-
-        private void InitialButton()
-        {
-            int k = 0;
-            _addButton.Enabled = false;
-            for (int j = 0; j < _tabControl1.TabCount; j++)
-            {
-                List<Button> buttons = new List<Button>();
-                var tab = _tabControl1.GetControl(j);
-                string projectPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                for (int i = k; i < k + _customerFormPresentationModel.GetMealCountByCategory(tab.Text); i++)
+                Object[] info = _customerFormPresentationModel.GetButtonInfo(Array.IndexOf(meals.ToArray(), meal) + (pageIndex - 1) * PAGE_SIZE);
+                Button button = new Button
                 {
-                    Object[] info = _customerFormPresentationModel.GetButtonInfo(i, k);
-                    Button button = new Button
-                    {
-                        Tag = i,
-                        Visible = false,
-                        Text = info[0].ToString(),
-                        Size = new Size(BUTTON_SIZE, BUTTON_SIZE),
-                        Location = (Point)info[1],
-                        Image = Image.FromFile(Path.Combine(projectPath, (string)(info[2])))
-                    };
-                    button.Click += new EventHandler(ClickMealButton);
-                    buttons.Add(button);
-                    tab.Controls.Add(button);
-
-                }
-                k += _customerFormPresentationModel.GetMealCountByCategory(tab.Text);
-                _buttons.Add(buttons);
+                    Tag = Array.IndexOf(meals.ToArray(), meal),
+                    Visible = true,
+                    Text = info[0].ToString(),
+                    Size = new Size(BUTTON_SIZE, BUTTON_SIZE),
+                    Location = (Point)info[1],
+                    Image = Image.FromFile(Path.Combine(projectPath, (string)(info[2])))
+                };
+                button.Click += new EventHandler(ClickMealButton);
+                _tabControl1.SelectedTab.Controls.Add(button);
             }
+            _previousButton.Enabled = _customerFormPresentationModel.GetButtonEnable((int)Buttons.Previous, pageIndex);
+            _nextButton.Enabled = _customerFormPresentationModel.GetButtonEnable((int)Buttons.Next, pageIndex);
+            _pageLabel.Text = _customerFormPresentationModel.GetPageLabelText(pageIndex);
+
         }
 
         /// <summary>   Event handler. Called by _nextButton for click events. </summary>
@@ -145,8 +110,7 @@ namespace POSOrderingSystem
 
         private void ClickNextPageButton(object sender, EventArgs e)
         {
-            LoadPage(_pageIndex++, false);
-            LoadPage(_pageIndex, true);
+            LoadPage(++_pageIndex);
         }
 
         /// <summary>   Event handler. Called by _previousButton for click events. </summary>
@@ -158,8 +122,7 @@ namespace POSOrderingSystem
 
         private void ClickPreviousPageButton(object sender, EventArgs e)
         {
-            LoadPage(_pageIndex--, false);
-            LoadPage(_pageIndex, true);
+            LoadPage(--_pageIndex);
         }
 
         /// <summary>   Event handler. Called by MealButton for click events. </summary>
@@ -171,7 +134,7 @@ namespace POSOrderingSystem
 
         private void ClickMealButton(object sender, EventArgs e)
         {
-            _customerFormPresentationModel.SetNowButton(Int32.Parse(((Button)sender).Tag.ToString()));
+            _customerFormPresentationModel.SetNowButton(Int32.Parse(((Button)sender).Tag.ToString()) + ((_pageIndex - 1) * PAGE_SIZE));
             _descriptionTextBox.Text = _customerFormPresentationModel.GetNowButtonMealDescription();
             _addButton.Enabled = true;
         }
@@ -249,8 +212,22 @@ namespace POSOrderingSystem
 
         private void ChangedTabControlSelectedIndex(object sender, EventArgs e)
         {
+            _customerFormPresentationModel.SetSelectedCategory(_tabControl1.SelectedTab.Text);
             _pageIndex = START_PAGE;
-            LoadPage(_pageIndex, true);
+            LoadPage(_pageIndex);
+        }
+
+        /// <summary>   Event handler. Called by POSCustomerSideForm for shown events. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 2018/11/12. </remarks>
+        ///
+        /// <param>             Source of the event. </param>
+        /// <param name="e">    . </param>
+
+        private void POSCustomerSideForm_Shown(object sender, EventArgs e)
+        {
+            _customerFormPresentationModel.SetSelectedCategory(_tabControl1.SelectedTab.Text);
+            LoadPage(_pageIndex);
         }
     }
 }
