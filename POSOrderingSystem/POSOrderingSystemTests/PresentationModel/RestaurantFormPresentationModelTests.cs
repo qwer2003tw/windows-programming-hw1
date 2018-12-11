@@ -1,21 +1,30 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// file:	PresentationModel\RestaurantFormPresentationModelTests.cs
+//
+// summary:	Implements the restaurant form presentation model tests class
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using POSOrderingSystem.Model;
-using POSOrderingSystem.PresentationModel;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POSOrderingSystem.PresentationModel.Tests
 {
+    /// <summary>   (Unit Test Class) a restaurant form presentation model tests. </summary>
+    ///
+    /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
     [TestClass()]
     public class RestaurantFormPresentationModelTests
     {
+        /// <summary>   The restaurant form presentation model. </summary>
         RestaurantFormPresentationModel restaurantFormPresentationModel;
+        /// <summary>   The categories. </summary>
         BindingList<Category> categories;
+        /// <summary>   The meals. </summary>
         BindingList<Meal> meals;
+
+        /// <summary>   Tests initialize. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestInitialize()]
         public void TestInitialize()
@@ -35,11 +44,20 @@ namespace POSOrderingSystem.PresentationModel.Tests
             meals.Add(meal);
             restaurantFormPresentationModel = new RestaurantFormPresentationModel(categories, meals);
         }
+
+        /// <summary>   (Unit Test Method) tests restaurant form presentation model. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void RestaurantFormPresentationModelTest()
         {
             Assert.Fail();
         }
+
+        /// <summary>   (Unit Test Method) tests set selected meal. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void SetSelectedMealTest()
@@ -47,11 +65,19 @@ namespace POSOrderingSystem.PresentationModel.Tests
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) tests get selected meal clone. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetSelectedMealCloneTest()
         {
             Assert.Fail();
         }
+
+        /// <summary>   (Unit Test Method) tests get new meal. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetNewMealTest()
@@ -59,11 +85,19 @@ namespace POSOrderingSystem.PresentationModel.Tests
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) tests get new category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetNewCategoryTest()
         {
             Assert.Fail();
         }
+
+        /// <summary>   (Unit Test Method) tests get meal save button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetMealSaveButtonEnableTest()
@@ -71,11 +105,19 @@ namespace POSOrderingSystem.PresentationModel.Tests
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) tests get meal add button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetMealAddButtonEnableTest()
         {
             Assert.Fail();
         }
+
+        /// <summary>   (Unit Test Method) tests get category save button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetCategorySaveButtonEnableTest()
@@ -83,11 +125,20 @@ namespace POSOrderingSystem.PresentationModel.Tests
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) tests get category add button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetCategoryAddButtonEnableTest()
         {
-            Assert.Fail();
+            var actual = restaurantFormPresentationModel.GetCategoryAddButtonEnable("Test");
+            Assert.AreEqual(true, actual);
         }
+
+        /// <summary>   (Unit Test Method) adds meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void AddMealTest()
@@ -95,11 +146,19 @@ namespace POSOrderingSystem.PresentationModel.Tests
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) saves the meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void SaveMealTest()
         {
             Assert.Fail();
         }
+
+        /// <summary>   (Unit Test Method) adds category test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void AddCategoryTest()
@@ -107,11 +166,19 @@ namespace POSOrderingSystem.PresentationModel.Tests
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) saves the category test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void SaveCategoryTest()
         {
             Assert.Fail();
         }
+
+        /// <summary>   (Unit Test Method) tests get meals by category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetMealsByCategoryTest()
@@ -119,17 +186,29 @@ namespace POSOrderingSystem.PresentationModel.Tests
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) tests set selected category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void SetSelectedCategoryTest()
         {
             Assert.Fail();
         }
 
+        /// <summary>   (Unit Test Method) tests get selected category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetSelectedCategoryTest()
         {
             Assert.Fail();
         }
+
+        /// <summary>   (Unit Test Method) deletes the select meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void DeleteSelectMealTest()

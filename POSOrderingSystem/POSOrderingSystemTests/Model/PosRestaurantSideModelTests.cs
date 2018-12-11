@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// file:	Model\PosRestaurantSideModelTests.cs
+//
+// summary:	Implements the position restaurant side model tests class
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using POSOrderingSystem.Model;
 using System;
 using System.Collections.Generic;
@@ -9,12 +13,24 @@ using System.Threading.Tasks;
 
 namespace POSOrderingSystem.Model.Tests
 {
+    /// <summary>   (Unit Test Class) a position restaurant side model tests. </summary>
+    ///
+    /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
     [TestClass()]
     public class PosRestaurantSideModelTests
     {
+        /// <summary>   The position restaurant side model. </summary>
         PosRestaurantSideModel posRestaurantSideModel;
+        /// <summary>   The categories. </summary>
         BindingList<Category> categories;
+        /// <summary>   The meals. </summary>
         BindingList<Meal> meals;
+
+        /// <summary>   Tests initialize. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestInitialize()]
         public void TestInitialize()
         {
@@ -33,12 +49,21 @@ namespace POSOrderingSystem.Model.Tests
             meals.Add(meal);
             posRestaurantSideModel = new PosRestaurantSideModel(categories, meals);
         }
+
+        /// <summary>   (Unit Test Method) tests position restaurant side model. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void PosRestaurantSideModelTest()
         {
             posRestaurantSideModel = new PosRestaurantSideModel(categories, meals);
             Assert.IsTrue(posRestaurantSideModel != null);
         }
+
+        /// <summary>   (Unit Test Method) tests get new meal. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetNewMealTest()
@@ -47,12 +72,20 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(actual != null);
         }
 
+        /// <summary>   (Unit Test Method) tests get new category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetNewCategoryTest()
         {
             var actual = posRestaurantSideModel.GetNewCategory();
             Assert.IsTrue(actual != null);
         }
+
+        /// <summary>   (Unit Test Method) tests get meal save button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetMealSaveButtonEnableTest()
@@ -84,6 +117,10 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(!actual);
         }
 
+        /// <summary>   (Unit Test Method) tests get meal add button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetMealAddButtonEnableTest()
         {
@@ -96,6 +133,10 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(actual);
         }
 
+        /// <summary>   (Unit Test Method) tests get category save button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetCategorySaveButtonEnableTest()
         {
@@ -107,6 +148,10 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(actual);
         }
 
+        /// <summary>   (Unit Test Method) tests get category add button enable. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetCategoryAddButtonEnableTest()
         {
@@ -116,6 +161,10 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(actual);
         }
 
+        /// <summary>   (Unit Test Method) adds meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void AddMealTest()
         {
@@ -123,6 +172,10 @@ namespace POSOrderingSystem.Model.Tests
             posRestaurantSideModel.AddMeal();
             Assert.IsTrue(obj != null);
         }
+
+        /// <summary>   (Unit Test Method) saves the meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void SaveMealTest()
@@ -132,6 +185,10 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(obj != null);
         }
 
+        /// <summary>   (Unit Test Method) adds category test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void AddCategoryTest()
         {
@@ -139,12 +196,20 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(true);
         }
 
+        /// <summary>   (Unit Test Method) saves the category test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void SaveCategoryTest()
         {
             posRestaurantSideModel.SaveCategory("Test");
             Assert.IsTrue(true);
         }
+
+        /// <summary>   (Unit Test Method) tests set original meal. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void SetOriginalMealTest()
@@ -155,6 +220,10 @@ namespace POSOrderingSystem.Model.Tests
             Assert.AreNotEqual(posRestaurantSideModel.SelectedMealClone, meals[0]);
         }
 
+        /// <summary>   (Unit Test Method) tests set original category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void SetOriginalCategoryTest()
         {
@@ -163,6 +232,10 @@ namespace POSOrderingSystem.Model.Tests
 
             Assert.AreNotEqual(posRestaurantSideModel.SelectedCategoryClone, categories[0]);
         }
+
+        /// <summary>   (Unit Test Method) deletes the select meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void DeleteSelectMealTest()

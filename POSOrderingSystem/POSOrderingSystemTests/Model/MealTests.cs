@@ -1,17 +1,26 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using POSOrderingSystem.Model;
+﻿// file:	Model\MealTests.cs
+//
+// summary:	Implements the meal tests class
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POSOrderingSystem.Model.Tests
 {
+    /// <summary>   (Unit Test Class) a meal tests. </summary>
+    ///
+    /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
     [TestClass()]
     public class MealTests
     {
+        /// <summary>   The meal. </summary>
         Meal meal;
+
+        /// <summary>   Tests initialize. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestInitialize()]
         public void TestInitialize()
         {
@@ -24,6 +33,11 @@ namespace POSOrderingSystem.Model.Tests
                 Price = 99
             };
         }
+
+        /// <summary>   (Unit Test Method) tests get button text. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetButtonTextTest()
         {
@@ -33,6 +47,10 @@ namespace POSOrderingSystem.Model.Tests
             meal.Name = meal.Name + "1";
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>   (Unit Test Method) tests clone. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void CloneTest()

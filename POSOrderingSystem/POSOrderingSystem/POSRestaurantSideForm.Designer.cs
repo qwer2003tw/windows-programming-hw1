@@ -205,6 +205,7 @@
             // 
             // _mealCategoryComboBox
             // 
+            this._mealCategoryComboBox.AccessibleName = "comboBox";
             this._mealCategoryComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.categoryBindingSource, "Name", true));
             this._mealCategoryComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this._selectedMealBindingSource, "Category", true));
             this._mealCategoryComboBox.DataSource = this._categoryBindingSource;

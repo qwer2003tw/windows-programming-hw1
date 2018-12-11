@@ -1,29 +1,46 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using POSOrderingSystem.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// file:	Model\OrderTests.cs
+//
+// summary:	Implements the order tests class
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace POSOrderingSystem.Model.Tests
 {
+    /// <summary>   (Unit Test Class) an order tests. </summary>
+    ///
+    /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
     [TestClass()]
     public class OrderTests
     {
+        /// <summary>   The order. </summary>
         Order order;
+
+        /// <summary>   Tests initialize. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestInitialize()]
         public void TestInitialize()
         {
             order = new Order();
         }
+
+        /// <summary>   (Unit Test Method) tests order. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void OrderTest()
         {
             order = new Order();
-            var a = order.TotalPrice;
-            Assert.IsTrue(order != null);
+            var actual = order.TotalPrice;
+            Assert.AreEqual("Total:0元", actual);
         }
+
+        /// <summary>   (Unit Test Method) deletes the meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void DeleteMealTest()
@@ -40,6 +57,10 @@ namespace POSOrderingSystem.Model.Tests
             order.DeleteMeal(0);
             Assert.IsTrue(order.OrderItems.Count == 0);
         }
+
+        /// <summary>   (Unit Test Method) adds meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void AddMealTest()

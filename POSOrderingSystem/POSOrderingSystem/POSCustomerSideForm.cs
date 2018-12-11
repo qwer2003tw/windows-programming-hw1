@@ -5,7 +5,6 @@
 using POSOrderingSystem.Model;
 using POSOrderingSystem.PresentationModel;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -85,6 +84,7 @@ namespace POSOrderingSystem
                 Object[] info = _customerFormPresentationModel.GetButtonInfo(Array.IndexOf(meals.ToArray(), meal) + (pageIndex - 1) * PAGE_SIZE);
                 Button button = new Button
                 {
+                    AccessibleName = _tabControl1.SelectedIndex + Array.IndexOf(meals.ToArray(), meal).ToString(),
                     Tag = Array.IndexOf(meals.ToArray(), meal),
                     Visible = true,
                     Text = info[0].ToString(),

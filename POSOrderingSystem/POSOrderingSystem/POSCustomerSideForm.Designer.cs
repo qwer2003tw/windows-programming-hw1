@@ -120,6 +120,7 @@
             // 
             // _descriptionTextBox
             // 
+            this._descriptionTextBox.AccessibleName = "description";
             this._descriptionTextBox.Location = new System.Drawing.Point(13, 487);
             this._descriptionTextBox.Name = "_descriptionTextBox";
             this._descriptionTextBox.ReadOnly = true;
@@ -174,6 +175,7 @@
             // 
             // _mealsDataGridView
             // 
+            this._mealsDataGridView.AccessibleName = "DGV";
             this._mealsDataGridView.AllowUserToAddRows = false;
             this._mealsDataGridView.AutoGenerateColumns = false;
             this._mealsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -195,11 +197,11 @@
             this._mealsDataGridView.TabIndex = 1;
             this._mealsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickMealsDataGridViewCellContent);
             // 
-            // dataGridViewTextBoxColumn1
+            // _dataGridViewTextBoxColumn1
             // 
             this._dataGridViewTextBoxColumn1.DataPropertyName = "Delete";
             this._dataGridViewTextBoxColumn1.HeaderText = "Delete";
-            this._dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this._dataGridViewTextBoxColumn1.Name = "_dataGridViewTextBoxColumn1";
             this._dataGridViewTextBoxColumn1.ReadOnly = true;
             this._dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this._dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -287,7 +289,7 @@
             this.ClientSize = new System.Drawing.Size(1110, 671);
             this.Controls.Add(this._tableLayoutPanel1);
             this.Name = "POSCustomerSideForm";
-            this.Text = "Form1";
+            this.Text = "POSCustomerSideForm";
             this.Shown += new System.EventHandler(this.POSCustomerSideForm_Shown);
             this._mealGroupBox.ResumeLayout(false);
             this._mealGroupBox.PerformLayout();
@@ -319,12 +321,12 @@
         private System.Windows.Forms.TabPage _tabPage1;
         private System.Windows.Forms.TabPage _tabPage2;
         private System.Windows.Forms.TabPage _tabPage3;
-        private System.Windows.Forms.DataGridViewButtonColumn _dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn _dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn _dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn _dataGridViewTextBoxColumn4;
         private DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn _dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn _dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewButtonColumn _dataGridViewTextBoxColumn1;
     }
 }
 

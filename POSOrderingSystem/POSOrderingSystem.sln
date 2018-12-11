@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewNumericUpDownEl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSOrderingSystemTests", "POSOrderingSystemTests\POSOrderingSystemTests.csproj", "{BACF7965-F2A9-4B32-8D50-92352AF0F59F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSOrderingSystemUITests", "POSOrderingSystemUITests\POSOrderingSystemUITests.csproj", "{D0432AF1-1F39-4DA9-8C5E-CADCB04680D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BACF7965-F2A9-4B32-8D50-92352AF0F59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BACF7965-F2A9-4B32-8D50-92352AF0F59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BACF7965-F2A9-4B32-8D50-92352AF0F59F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0432AF1-1F39-4DA9-8C5E-CADCB04680D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0432AF1-1F39-4DA9-8C5E-CADCB04680D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0432AF1-1F39-4DA9-8C5E-CADCB04680D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0432AF1-1F39-4DA9-8C5E-CADCB04680D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

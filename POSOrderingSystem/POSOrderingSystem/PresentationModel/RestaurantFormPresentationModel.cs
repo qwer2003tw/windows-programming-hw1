@@ -15,7 +15,13 @@ namespace POSOrderingSystem.PresentationModel
     {
         /// <summary>   The position restaurant side model. </summary>
         readonly PosRestaurantSideModel _posRestaurantSideModel;
+        /// <summary>   Event queue for all listeners interested in PropertyChanged events. </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>   Delegate for handling PropertyChanged events. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         public delegate void PropertyChangedEventHandler();
 
         /// <summary>   Constructor. </summary>
@@ -30,6 +36,15 @@ namespace POSOrderingSystem.PresentationModel
             _posRestaurantSideModel = new PosRestaurantSideModel(categories, meals);
             _posRestaurantSideModel.PropertyChanged += _posRestaurantSideModel_PropertyChanged;
         }
+
+        /// <summary>
+        /// Event handler. Called by _posRestaurantSideModel for property changed events.
+        /// </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Property changed event information. </param>
 
         private void _posRestaurantSideModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -133,11 +148,12 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
+        /// ### <param name="name"> The name. </param>
+        ///
+        /// ### <param name="price">        The price. </param>
+        /// ### <param name="imagePath">    Full pathname of the image file. </param>
+        /// ### <param name="description">  The description. </param>
+        /// ### <param name="category">     The category. </param>
 
         public void AddMeal()
         {
@@ -148,11 +164,12 @@ namespace POSOrderingSystem.PresentationModel
         ///
         /// <remarks>   Chen-Tai,Peng, 2018/10/31. </remarks>
         ///
-        /// <param name="name">         The name. </param>
-        /// <param name="price">        The price. </param>
-        /// <param name="imagePath">    Full pathname of the image file. </param>
-        /// <param name="description">  The description. </param>
-        /// <param name="category">     The category. </param>
+        /// ### <param name="name"> The name. </param>
+        ///
+        /// ### <param name="price">        The price. </param>
+        /// ### <param name="imagePath">    Full pathname of the image file. </param>
+        /// ### <param name="description">  The description. </param>
+        /// ### <param name="category">     The category. </param>
 
         public void SaveMeal()
         {

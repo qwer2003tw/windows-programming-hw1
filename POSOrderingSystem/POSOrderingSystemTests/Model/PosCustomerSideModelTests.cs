@@ -1,20 +1,30 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using POSOrderingSystem.Model;
-using System;
-using System.Collections.Generic;
+﻿// file:	Model\PosCustomerSideModelTests.cs
+//
+// summary:	Implements the position customer side model tests class
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POSOrderingSystem.Model.Tests
 {
+    /// <summary>   (Unit Test Class) a position customer side model tests. </summary>
+    ///
+    /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
     [TestClass()]
     public class PosCustomerSideModelTests
     {
+        /// <summary>   The position customer side model. </summary>
         PosCustomerSideModel posCustomerSideModel;
+        /// <summary>   The categories. </summary>
         BindingList<Category> categories;
+        /// <summary>   The meals. </summary>
         BindingList<Meal> meals;
+
+        /// <summary>   Tests initialize. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestInitialize()]
         public void TestInitialize()
         {
@@ -33,6 +43,11 @@ namespace POSOrderingSystem.Model.Tests
             meals.Add(meal);
             posCustomerSideModel = new PosCustomerSideModel(categories, meals);
         }
+
+        /// <summary>   (Unit Test Method) tests position customer side model. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void PosCustomerSideModelTest()
         {
@@ -40,6 +55,10 @@ namespace POSOrderingSystem.Model.Tests
 
             Assert.IsTrue(posCustomerSideModel != null);
         }
+
+        /// <summary>   (Unit Test Method) tests get now button meal description. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetNowButtonMealDescriptionTest()
@@ -49,12 +68,20 @@ namespace POSOrderingSystem.Model.Tests
             Assert.AreEqual(meals[0].Descript, actual);
         }
 
+        /// <summary>   (Unit Test Method) tests get meals count. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetMealsCountTest()
         {
             var actual = posCustomerSideModel.GetMealsCount();
             Assert.AreEqual(1, actual);
         }
+
+        /// <summary>   (Unit Test Method) tests get meal by index. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetMealByIndexTest()
@@ -64,12 +91,20 @@ namespace POSOrderingSystem.Model.Tests
             Assert.AreEqual(a, meals[0]);
         }
 
+        /// <summary>   (Unit Test Method) tests get order. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetOrderTest()
         {
             posCustomerSideModel.GetOrder();
             Assert.IsTrue(true);
         }
+
+        /// <summary>   (Unit Test Method) adds now button meal test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void AddNowButtonMealTest()
@@ -79,12 +114,20 @@ namespace POSOrderingSystem.Model.Tests
             Assert.IsTrue(true);
         }
 
+        /// <summary>   (Unit Test Method) tests get binding list. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetBindingListTest()
         {
             var actual = posCustomerSideModel.GetBindingList();
             Assert.AreEqual(0, actual.Count);
         }
+
+        /// <summary>   (Unit Test Method) deletes the meal by index test. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void DeleteMealByIndexTest()
@@ -95,13 +138,21 @@ namespace POSOrderingSystem.Model.Tests
             Assert.AreEqual(0, posCustomerSideModel.GetOrder().OrderItems.Count);
         }
 
+        /// <summary>   (Unit Test Method) tests get meal count by category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
+
         [TestMethod()]
         public void GetMealCountByCategoryTest()
         {
             posCustomerSideModel.SetSelectedCategory(categories[0].Name);
             var a = posCustomerSideModel.GetMealCountByCategory();
-            Assert.AreEqual(a, 1);
+            Assert.AreEqual(1, a);
         }
+
+        /// <summary>   (Unit Test Method) tests get meals by category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void GetMealsByCategoryTest()
@@ -110,6 +161,10 @@ namespace POSOrderingSystem.Model.Tests
             var a = posCustomerSideModel.GetMealsByCategory();
             Assert.AreEqual(a[0], meals[0]);
         }
+
+        /// <summary>   (Unit Test Method) tests set selected category. </summary>
+        ///
+        /// <remarks>   Chen-Tai,Peng, 11/25/2018. </remarks>
 
         [TestMethod()]
         public void SetSelectedCategoryTest()
